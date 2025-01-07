@@ -29,5 +29,10 @@ namespace ConferenceManager.Data
         {
             _attendeeList.Add(newAttendee); 
         }
+
+        public bool CheckAttendance(int eventId, int userId)
+        {
+            return _attendeeList.Where(a => a.EventId == eventId).Where(a => a.UserId == userId).Any();
+        }
     }
 }

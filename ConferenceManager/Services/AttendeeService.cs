@@ -16,5 +16,10 @@ namespace ConferenceManager.Services
         {
             return _attendeeRepository.GetAttendees();
         }
+
+        public bool CheckAttendance(int eventId, int userId)
+        {
+            return _attendeeRepository.CheckAttendance(eventId, userId);
+        }
     }
 }

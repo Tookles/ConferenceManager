@@ -1,16 +1,20 @@
 ﻿using ConferenceManager.Data.Entity;
 using ConferenceManager.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace ConferenceManager.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AttendeeController(AttendeeService attendeeService, EventsService eventService) : ControllerBase 
+public class AttendeeController(AttendeeService attendeeService, EventsService eventService, UserService userService) : ControllerBase 
 {
     private readonly AttendeeService _attendeeService = attendeeService;
 
     private readonly EventsService _eventService = eventService;
+
+    private readonly UserService _userService = userService;
 
 
     [HttpGet]
@@ -21,29 +25,33 @@ public class AttendeeController(AttendeeService attendeeService, EventsService e
     }
 
 
-
-    [HttpPost]
-    public IActionResult AddAttendees(Attendee newAttendee)
+    [Authorize]
+    [HttpPost("{eventId}")]
+    public IActionResult AddAttendees(int eventId)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
-        if (_eventService.CheckIdExists(newAttendee.EventId))
+      
+        if (!_eventService.CheckIdExists(eventId))
         {
             return BadRequest("Event Id does not exists"); 
         }
 
+        bool checkUserId = Int32.TryParse(HttpContext.User.Claims.First()?.Value, out int userId);
 
-        // extract sub from event payload for user Id 
-        // check User Id exists -> call User Repo 
-        // check User Id isn't already attending  -> 
-        // add authorisation 
-        
+        if (!checkUserId || !_userService.DoesUserExist(userId))
+        {
+            return BadRequest("Invalid user id");
+        }
 
-        _attendeeService.AddAttendee(newAttendee);
-        return Ok(); 
+        if (_attendeeService.CheckAttendance(eventId, userId))
+        {
+            return BadRequest("User already attending this event");
+        }
+
+        Attendee attendeeToAdd = new Attendee() { EventId = eventId, UserId = userId };
+
+        _attendeeService.AddAttendee(attendeeToAdd);
+
+        return NoContent($"/api/attendees/{eventId}", $"{userId} is now attending {eventId}"); 
     }
 
 
