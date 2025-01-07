@@ -19,5 +19,21 @@ public class SpeakerRepository
         return JsonSerializer.Deserialize<List<Speaker>>(json);
     }
     public List<Speaker> GetSpeakers(int eventId)
-        => _speakerList.Where(s => s.EventId == eventId).ToList();
+        => _speakerList.Where(s => s.Events.Contains(eventId)).ToList();
+
+    public void DeleteSpeaker(int eventId, int speakerId)
+    {
+        Speaker speakerToDelete = _speakerList.Where(s => s.Id == speakerId).First(); 
+        speakerToDelete.Events.Remove(eventId);
+    }
+
+    public void AddSpeaker(Speaker speakerToAdd)
+    {
+        _speakerList.Add(speakerToAdd);
+    }
+
+    public void AddEvent(int eventId, int speakerId)
+    {
+        _speakerList.Where(s => s.Id == speakerId).First().Events.Add(eventId); 
+    }
 }

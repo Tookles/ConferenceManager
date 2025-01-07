@@ -10,4 +10,19 @@ public class SpeakerService(SpeakerRepository speakerRepository)
     {
         return _speakerRepository.GetSpeakers(eventId);
     }
+
+    public void DeleteSpeaker(int eventId, int speakerId)
+    {
+        _speakerRepository.DeleteSpeaker(eventId, speakerId);
+    }
+
+    public void AddSpeaker(Speaker speakerToAdd)
+    {
+        _speakerRepository.AddSpeaker(speakerToAdd);
+    }
+
+    public void AddEvent(int eventId, int speakerId)
+    {
+        _speakerRepository.AddEvent(eventId, speakerId);
+    }
 }
