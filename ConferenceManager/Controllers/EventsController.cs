@@ -20,4 +20,17 @@ public class EventsController(EventsService eventsService) : ControllerBase
     {
         return Ok(_eventsService.GetEventById(id));
     }
+
+    [HttpPost]
+    public IActionResult AddEvent(Event newEvent)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        _eventsService.AddEvent(newEvent);
+        return NoContent(); 
+    }
+
+
 }

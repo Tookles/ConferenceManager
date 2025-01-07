@@ -14,4 +14,9 @@ public class EventsService(EventsRepository eventsRepository)
     {
         return _eventsRepository.GetEventById(id);
     }
+
+    public void AddEvent(Event newEvent)
+    {
+        _eventsRepository.AddEvent(newEvent); 
+    }
 }
