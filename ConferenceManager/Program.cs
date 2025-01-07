@@ -46,8 +46,10 @@ namespace ConferenceManager
                     ValidAudience = "ConferenceManager",
                     ValidateLifetime = false,
                     ValidateIssuerSigningKey = true,
+                    RoleClaimType = "roles",
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
+                options.MapInboundClaims = false;
             });
 
 

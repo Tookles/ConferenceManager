@@ -18,6 +18,7 @@ public class AttendeeController(AttendeeService attendeeService, EventsService e
 
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public IActionResult GetAttendees()
     {
         var allAttendees = _attendeeService.GetAttendees();
