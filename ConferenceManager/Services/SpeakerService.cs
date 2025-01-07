@@ -1,7 +1,7 @@
-﻿
-using ConferenceManager.Data;
+﻿using ConferenceManager.Data;
+using ConferenceManager.Data.Entity;
 
-namespace ConferenceManager.Controllers;
+namespace ConferenceManager.Services;
 
 public class SpeakerService(SpeakerRepository speakerRepository)
 {

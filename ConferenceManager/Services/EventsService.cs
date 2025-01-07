@@ -19,4 +19,9 @@ public class EventsService(EventsRepository eventsRepository)
     {
         _eventsRepository.AddEvent(newEvent); 
     }
+
+    public bool CheckIdExists(int id)
+    {
+        return _eventsRepository.CheckIdExists(id); 
+    }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ConferenceManager.Data;
+namespace ConferenceManager.Data.Entity;
 
 public class Speaker
 {

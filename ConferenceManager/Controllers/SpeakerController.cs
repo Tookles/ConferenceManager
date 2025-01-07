@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ConferenceManager.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ConferenceManager.Controllers;
 

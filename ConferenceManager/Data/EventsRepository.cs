@@ -36,4 +36,9 @@ public class EventsRepository
     {
         _eventsInMemory.Add(newEvent);
     }
+
+    internal bool CheckIdExists(int id)
+    {
+        return _eventsInMemory.Where(e => e.Id == id).Any(); 
+    }
 }

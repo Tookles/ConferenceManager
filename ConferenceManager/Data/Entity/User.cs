@@ -1,4 +1,4 @@
-﻿namespace ConferenceManager.Data;
+﻿namespace ConferenceManager.Data.Entity;
 
 public class User
 {

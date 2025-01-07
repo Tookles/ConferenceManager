@@ -1,7 +1,7 @@
-﻿using ConferenceManager.Data;
-using System.Text.Json;
+﻿using System.Text.Json;
+using ConferenceManager.Data.Entity;
 
-namespace ConferenceManager.Controllers;
+namespace ConferenceManager.Data;
 
 public class SpeakerRepository
 {
@@ -19,5 +19,5 @@ public class SpeakerRepository
         return JsonSerializer.Deserialize<List<Speaker>>(json);
     }
     public List<Speaker> GetSpeakers(int eventId)
-        => _speakerList.Where(s => s.EventId == eventId).ToList(); 
+        => _speakerList.Where(s => s.EventId == eventId).ToList();
 }

@@ -24,6 +24,7 @@ public class Event
 
     [JsonPropertyName("venue")]
     public string Venue { get; set; }
+
     [JsonPropertyName("description")]
     public string Description { get; set; }
     [JsonPropertyName("category")]
