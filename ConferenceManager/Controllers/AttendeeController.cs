@@ -24,6 +24,19 @@ public class AttendeeController(AttendeeService attendeeService, EventsService e
         return Ok(allAttendees);
     }
 
+    [HttpGet("{id}")]
+    public IActionResult GetAttendeeById(int id)
+    {
+        bool checkId = Int32.TryParse(HttpContext.User.Claims.First().Value, out int userId);
+
+        if (!checkId || userId != id)
+        {
+            return BadRequest("User not authorised/no matching user Id");
+        }
+
+        return Ok(_attendeeService.GetAttendeeRecords(id));
+    }
+
 
     [Authorize]
     [HttpPost("{eventId}")]
@@ -51,7 +64,7 @@ public class AttendeeController(AttendeeService attendeeService, EventsService e
 
         _attendeeService.AddAttendee(attendeeToAdd);
 
-        return NoContent($"/api/attendees/{eventId}", $"{userId} is now attending {eventId}"); 
+        return Created($"/api/attendees/{eventId}", $"{userId} is now attending {eventId}"); 
     }
 
 

@@ -21,5 +21,10 @@ namespace ConferenceManager.Services
         {
             return _attendeeRepository.CheckAttendance(eventId, userId);
         }
+
+        public List<Attendee> GetAttendeeRecords(int userId)
+        {
+            return _attendeeRepository.GetAttendees().Where(a => a.UserId == userId).ToList();
+        }
     }
 }
