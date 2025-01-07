@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceManager", "ConferenceManager\ConferenceManager.csproj", "{EB85E3A8-5C00-4D03-8C00-DEC8526D6525}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthTest", "AuthTest\AuthTest.csproj", "{868C09D2-E9A9-4E73-BCA7-1138E8DB8FE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EB85E3A8-5C00-4D03-8C00-DEC8526D6525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB85E3A8-5C00-4D03-8C00-DEC8526D6525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB85E3A8-5C00-4D03-8C00-DEC8526D6525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{868C09D2-E9A9-4E73-BCA7-1138E8DB8FE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{868C09D2-E9A9-4E73-BCA7-1138E8DB8FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{868C09D2-E9A9-4E73-BCA7-1138E8DB8FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{868C09D2-E9A9-4E73-BCA7-1138E8DB8FE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
