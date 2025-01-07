@@ -1,4 +1,5 @@
 ﻿using ConferenceManager.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConferenceManager.Controllers;
@@ -22,6 +23,7 @@ public class EventsController(EventsService eventsService) : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public IActionResult AddEvent(Event newEvent)
     {
         if (!ModelState.IsValid)
