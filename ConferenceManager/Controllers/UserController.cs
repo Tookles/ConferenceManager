@@ -38,7 +38,8 @@ namespace ConferenceManager.Controllers
                 return BadRequest("Password does not match");
             }
 
-            var token = _userService.GetToken(userLogin); 
+            var token = _userService.GetToken(userLogin);
+            Response.Cookies.Append("Bearer", token, new CookieOptions() { HttpOnly = true, SameSite = SameSiteMode.Lax, Expires = DateTime.UtcNow.AddHours(1) });
             return Ok(token); 
 
         }
