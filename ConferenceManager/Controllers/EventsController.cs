@@ -23,7 +23,7 @@ public class EventsController(EventsService eventsService) : ControllerBase
     }
 
     [HttpPost]
-    [Authorize]
+    //[Authorize]
     public IActionResult AddEvent(Event newEvent)
     {
         if (!ModelState.IsValid)

@@ -51,9 +51,19 @@ namespace ConferenceManager
                 options.MapInboundClaims = false;
             });
 
-
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyCorsPolicy",
+                policy =>
+                {
+                    policy.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
             var app = builder.Build();
+            app.UseCors("MyCorsPolicy");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -63,6 +73,7 @@ namespace ConferenceManager
             }
 
             app.UseHttpsRedirection();
+
 
             app.UseAuthentication();
             app.UseAuthorization();
