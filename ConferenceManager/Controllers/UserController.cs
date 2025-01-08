@@ -11,8 +11,16 @@ namespace ConferenceManager.Controllers
 
         private readonly UserService _userService = userService;
 
+        [HttpPost("newuser")]
+        public IActionResult newuser(UserDetails userDetails)
+        {
+            string hashedPassword = _userService.SavePassword(userDetails.Password);
+            return Ok(hashedPassword); 
+        }
 
-        [HttpPost]
+
+
+        [HttpPost("login")]
         public IActionResult login(UserDetails userLogin)
         {
             if (!ModelState.IsValid)
